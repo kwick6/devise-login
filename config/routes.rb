@@ -1,8 +1,12 @@
 Auth::Application.routes.draw do
 
-  resources :sessions
-  resources :users
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  resources :users
+  resources :sessions
+  
   root to: 'articles#index'
   resources :articles
 
@@ -56,7 +60,7 @@ Auth::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # root :to => 'articles#index'
 
   # See how all your routes lay out with "rake routes"
 
